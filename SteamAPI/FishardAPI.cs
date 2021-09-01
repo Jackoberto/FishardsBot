@@ -31,7 +31,7 @@ namespace FishardsBot.SteamAPI
 
         async void Init()
         {
-            var secrets = await Secrets.GetSecrets();
+            var secrets = await SteamSecrets.GetSecrets();
             webInterfaceFactory = new SteamWebInterfaceFactory(secrets.APIKey);
             steamUserStats = webInterfaceFactory.CreateSteamWebInterface<SteamUserStats>(new HttpClient());
             steamStore = webInterfaceFactory.CreateSteamStoreInterface(new HttpClient());
@@ -77,14 +77,14 @@ namespace FishardsBot.SteamAPI
         }
     }
 
-    class Secrets
+    class SteamSecrets
     {
         public string APIKey { get; set; }
 
-        public static async Task<Secrets> GetSecrets()
+        public static async Task<SteamSecrets> GetSecrets()
         {
-            var text = await File.ReadAllTextAsync("Secrets.json");
-            return JsonSerializer.Deserialize<Secrets>(text);
+            var text = await File.ReadAllTextAsync("SteamSecrets.json");
+            return JsonSerializer.Deserialize<SteamSecrets>(text);
         }
     }
 }
