@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
@@ -49,6 +51,29 @@ namespace FishardsBot.Commands {
             var random = new Random();
             var result = random.Next(sides) + 1;
             await ctx.Channel.SendMessageAsync("You rolled: " + result);
+        }
+        
+        [Command("RandomElements")]
+        [Aliases("RandomClass")]
+        public async Task RandomElements(CommandContext ctx)
+        {
+            var random = new Random();
+            var possibleElements = new List<DiscordEmoji>
+            {
+                DiscordEmoji.FromName(ctx.Client, ":water_element:"),
+                DiscordEmoji.FromName(ctx.Client, ":goo_element:"),
+                DiscordEmoji.FromName(ctx.Client, ":earth_element:"),
+                DiscordEmoji.FromName(ctx.Client, ":arcane_element:"),
+                DiscordEmoji.FromName(ctx.Client, ":fire_element:")
+            };
+            var str = new StringBuilder();
+            for (int i = 0; i < 3; i++)
+            {
+                var element = possibleElements[random.Next(possibleElements.Count)];
+                possibleElements.Remove(element);
+                str.AppendLine(element);
+            }
+            await ctx.Channel.SendMessageAsync(str.ToString());
         }
 
         // [Command("idea")]
