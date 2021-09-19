@@ -14,7 +14,6 @@ namespace FishardsBot.SteamAPI
         private SteamUserStats steamUserStats;
         public uint FishardsId => 1637140;
         public uint FishardsDemoId => 1700260;
-        public ulong MySteamId => 76561198159249321;
         private static FishardAPI fishardApi;
         private SteamStore steamStore;
 

@@ -12,7 +12,7 @@ namespace FishardsBot.Commands
         [Command("PlayerCount")]
         [Description("Get the amount of players currently playing Fishards (or Fishards Demo before release) according to Steam")]
         [Aliases("Players")]
-        public async Task GetFishardPlayerCount(CommandContext ctx)
+        public async Task GetFishardsPlayerCount(CommandContext ctx)
         {
             var fishardsAPI = FishardAPI.GetFishardsAPI();
             var playerCount = await fishardsAPI.GetPlayerCount();

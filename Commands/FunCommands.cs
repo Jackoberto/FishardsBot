@@ -71,7 +71,7 @@ namespace FishardsBot.Commands {
             {
                 var element = possibleElements[random.Next(possibleElements.Count)];
                 possibleElements.Remove(element);
-                str.AppendLine(element);
+                str.AppendJoin(' ',element);
             }
             await ctx.Channel.SendMessageAsync(str.ToString());
         }
